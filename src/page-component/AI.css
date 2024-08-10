@@ -1,0 +1,103 @@
+html {
+  background-color: #212832;
+  color: #e8e8e8;
+  font-family: 'GSansMedium'
+}
+
+#ai-input-field {
+  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  left: 0px;
+  background-color: transparent;
+  justify-items:space-evenly;
+  text-align: center;
+  height:60px
+}
+#ai-input-field input:nth-child(1) {
+  width: calc(100% - 80px);
+  max-width: 900px;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  background-color: #31475e;
+  padding-left: 10px;
+  font-family: 'GSansMedium';
+  color: #e8e8e8;
+  font-size: 15px;
+  position: absolute;
+  bottom:0px;
+  left: 10px
+}
+#ai-input-field button {
+  width: 42px;
+  margin-left: 10px;
+  height: 42px;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 8px;
+  border: none;
+  background-image: linear-gradient(to bottom right, #9050DA, #007AFF);
+  cursor: pointer;
+  right: 10px
+}
+
+#submit-arrow {
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+#ai-answer {
+  width: calc(100% - 20px);
+  position: fixed;
+  bottom: 100px;
+  left: 10px;
+  font-family: 'GSansMedium';
+  line-height: 25px;
+}
+
+@media screen and (min-width: 900px) {
+  #ai-input-field {
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+    left: 48%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    justify-content: center;
+    text-align: center;
+    min-width: 800px;
+    height: unset
+  }
+  #ai-input-field input:nth-child(1) {
+    width: calc(100% - 100px);
+    max-width: 500px;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: #31475e;
+    padding-left: 10px;
+    font-family: 'GSansMedium';
+    color: #e8e8e8;
+    font-size: 15px;
+    position: unset;
+    left: unset
+  }
+  #ai-input-field button {
+    width: 42px;
+    margin-left: 10px;
+    height: 42px;
+    position: absolute;
+    bottom: 0px;
+    border-radius: 8px;
+    border: none;
+    background-image: linear-gradient(to bottom right, #9050DA, #007AFF);
+    cursor: pointer;
+    right: unset
+  }
+}
