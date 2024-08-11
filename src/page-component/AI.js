@@ -29,7 +29,8 @@ export default function AI() {
     document.getElementById('ai-answer').innerText = generatePrompt()
     document.getElementById('user-prompt-display').innerText = document.getElementById('ai-user-input').value
     document.getElementById('ai-user-input').value = ''
-    document.getElementById('chatbox').style.display = 'block'
+    document.getElementById('chatbox').style.opacity = 1
+    document.getElementById('greeting').style.opacity = 0
   }
   async function run() {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
@@ -50,13 +51,19 @@ export default function AI() {
     try {
       const chat = model.startChat(chatHistory);
 
-      const result = await chat.sendMessageStream(userPrompt);
+      const result = await chat.sendMessage(userPrompt);
       const response = await result.response;
       const text = response.text();
       setGP(text)
-      document.getElementById('ai-answer').innerText = text
+      /*document.getElementById('ai-answer').innerText = text
+      navigator.clipboard.writeText(text).then(function() {
+
+      }).catch(function(error){
+        console.log(error)
+      })*/ 
     } catch(error) {
       setGP("Your request couldn't be processed due to an error. " + error)
+      document.getElementById('ai-answer').innerText = generatedPrompt
     }
   }
 
@@ -81,7 +88,7 @@ export default function AI() {
       greeting = "morning"
     } else if (hours >= 11 && hours <= 18) {
       greeting = "afternoon"
-    } else if (hours >= 18 && hours <= 1) {
+    } else if (hours >= 18 && hours <= 23) {
       greeting = "night"
     }
 
@@ -92,12 +99,35 @@ export default function AI() {
     }
   }
 
+  function setNavbar(type) {
+    if (type === 'show') {
+      document.getElementById('navmenu').style.transform = 'translateX(0px)';
+      document.getElementById('close-menu').style.display = 'block'
+    } else if (type === 'hide') {
+      document.getElementById('navmenu').style.transform = 'translateX(-100%)';
+      document.getElementById('close-menu').style.display = 'none'
+    }
+  }
+
   return (
     <>
       <div id='greeting'>{greeting}</div>
-      <div id='navbar'></div>
+      <div id='navmenu'>
+        <div id="model-selection">
+          ZenAI 1.0<span>(beta)</span>
+        </div>
+      </div>
+      <div id='close-menu' onClick={() => setNavbar('hide')}></div>
+      <div id='navbar'>
+        <div id='navbar-logo'></div>
+        <span id='navbar-title'>ZenAI</span>
+        <div className='nav-menu-button-wrap' onClick={() => setNavbar('show')}>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <form onSubmit={runAI} id='ai-input-field'>
-        <input type='text' placeholder='Input prompt' onInput={(e) => setUserPrompt(e.target.value)} id='ai-user-input' autoComplete='off'/>
+        <input type='text' placeholder='Ask something..' onInput={(e) => setUserPrompt(e.target.value)} id='ai-user-input' autoComplete='off'/>
         <button type='submit'><img src={arrow} alt='' id='submit-arrow'/></button>
       </form>
       <div id='chatbox'>
