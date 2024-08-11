@@ -289,8 +289,9 @@ html {
     min-height: 35px;
     background-color:transparent;
     position: absolute;
-    left:50%;
-    translate: -50%;
+    left: 60%;
+    transform: translateX(-50%);
+    translate: unset
   }
   #user-prompt-wrapper {
     width: calc(100% - 110px);
