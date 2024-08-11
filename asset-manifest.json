@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zenai/static/css/main.0c8a2bed.css",
-    "main.js": "/zenai/static/js/main.151419fb.js",
+    "main.css": "/zenai/static/css/main.c3059208.css",
+    "main.js": "/zenai/static/js/main.1845bf2a.js",
     "static/js/453.42e71653.chunk.js": "/zenai/static/js/453.42e71653.chunk.js",
     "static/media/ProductSans-Regular.ttf": "/zenai/static/media/ProductSans-Regular.2765c69613690b1b9c03.ttf",
     "static/media/ProductSans-Thin.ttf": "/zenai/static/media/ProductSans-Thin.cc886c2747bf6f2c4888.ttf",
@@ -12,12 +12,12 @@
     "static/media/icon.svg": "/zenai/static/media/icon.c0bce36464afe8a7be19.svg",
     "index.html": "/zenai/index.html",
     "static/media/arrow-up.svg": "/zenai/static/media/arrow-up.ae2f1cb7ed5e80365bed7c223d4ae569.svg",
-    "main.0c8a2bed.css.map": "/zenai/static/css/main.0c8a2bed.css.map",
-    "main.151419fb.js.map": "/zenai/static/js/main.151419fb.js.map",
+    "main.c3059208.css.map": "/zenai/static/css/main.c3059208.css.map",
+    "main.1845bf2a.js.map": "/zenai/static/js/main.1845bf2a.js.map",
     "453.42e71653.chunk.js.map": "/zenai/static/js/453.42e71653.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c8a2bed.css",
-    "static/js/main.151419fb.js"
+    "static/css/main.c3059208.css",
+    "static/js/main.1845bf2a.js"
   ]
 }
