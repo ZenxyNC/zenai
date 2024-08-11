@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import './AI.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import arrow from '../resource/arrow-up.svg'
 import '../resource/font/importFont.css'
 
@@ -10,12 +10,26 @@ export default function AI() {
   
   const [generatedPrompt, setGP] = useState()
   const [userPrompt, setUserPrompt] = useState()
+  const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn'))
+  const [username, setUsername] = useState()
+  const [greeting, setGreet] = useState(getGreeting())
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setUsername(localStorage.getItem('username'))
+    } else {
+      setUsername(undefined)
+      setLog(false)
+    }
+  }, [isLoggedIn])
   
   const runAI = (e) => {
     e.preventDefault()
     run()
     document.getElementById('ai-answer').innerText = generatePrompt()
+    document.getElementById('user-prompt-display').innerText = document.getElementById('ai-user-input').value
     document.getElementById('ai-user-input').value = ''
+    document.getElementById('chatbox').style.display = 'block'
   }
   async function run() {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
@@ -36,7 +50,7 @@ export default function AI() {
     try {
       const chat = model.startChat(chatHistory);
 
-      const result = await chat.sendMessage(userPrompt);
+      const result = await chat.sendMessageStream(userPrompt);
       const response = await result.response;
       const text = response.text();
       setGP(text)
@@ -58,13 +72,43 @@ export default function AI() {
     }
   }
 
+  function getGreeting() {
+    var day = new Date();
+    var hours = day.getHours();
+    let greeting
+
+    if (hours >= 1 && hours <= 11) {
+      greeting = "morning"
+    } else if (hours >= 11 && hours <= 18) {
+      greeting = "afternoon"
+    } else if (hours >= 18 && hours <= 1) {
+      greeting = "night"
+    }
+
+    if (isLoggedIn) {
+      return "Good " + greeting + '.'
+    } else {
+      return "Good " + greeting + '.'
+    }
+  }
+
   return (
     <>
+      <div id='greeting'>{greeting}</div>
+      <div id='navbar'></div>
       <form onSubmit={runAI} id='ai-input-field'>
         <input type='text' placeholder='Input prompt' onInput={(e) => setUserPrompt(e.target.value)} id='ai-user-input' autoComplete='off'/>
         <button type='submit'><img src={arrow} alt='' id='submit-arrow'/></button>
       </form>
-      <div id='ai-answer'></div>
+      <div id='chatbox'>
+        <div id='ai-textbox'>
+          <div id='user-prompt-wrapper'>
+            <div id='user-prompt-display'></div>
+          </div>
+          <div id='ai-profile'></div>
+          <div id='ai-answer'></div>
+        </div>
+      </div>
     </>
   )
 }

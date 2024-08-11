@@ -1,7 +1,8 @@
 html {
   background-color: #212832;
   color: #e8e8e8;
-  font-family: 'GSansMedium'
+  font-family: 'GSansRegular';
+  overflow-y: scroll
 }
 
 #ai-input-field {
@@ -12,7 +13,8 @@ html {
   background-color: transparent;
   justify-items:space-evenly;
   text-align: center;
-  height:60px
+  height:60px;
+  z-index: 100
 }
 #ai-input-field input:nth-child(1) {
   width: calc(100% - 80px);
@@ -23,12 +25,15 @@ html {
   border: none;
   background-color: #31475e;
   padding-left: 10px;
-  font-family: 'GSansMedium';
+  font-family: 'GSansRegular';
   color: #e8e8e8;
   font-size: 15px;
   position: absolute;
   bottom:0px;
   left: 10px
+}
+#ai-input-field ::-webkit-input-placeholder {
+  color: rgb(232, 232, 232, 0.2)
 }
 #ai-input-field button {
   width: 42px;
@@ -51,13 +56,71 @@ html {
   transform: translate(-50%, -50%)
 }
 
+#chatbox {
+  width: 100%;
+  height: calc(100% - 110px);
+  position: absolute;
+  background-color: transparent;
+  overflow-y: scroll;
+  display: none
+}
+
+#ai-textbox{
+  width: calc(100% - 0px);
+  height: max-content;
+  min-height: 35px;
+  background-color:transparent;
+  position: absolute;
+  left:50%;
+  translate: -50%;
+}
+
 #ai-answer {
-  width: calc(100% - 20px);
-  position: fixed;
-  bottom: 100px;
-  left: 10px;
-  font-family: 'GSansMedium';
-  line-height: 25px;
+  width: calc(100% - 60px);
+  height: max-content;
+  background-color: transparent;
+  font-family: 'GSansRegular';
+  font-size: 17px;
+  line-height: 26px;
+  margin-left: 45px;
+}
+#ai-profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  background-color: #1e1e1e;
+  background-image: url('../resource/icon.svg');
+  background-position:center;
+  background-size: 28px;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-left: 5px
+}
+#user-prompt-display {
+  width: max-content;
+  min-width: 100px;
+  height: max-content;
+  min-height: 30px;
+  background-color: #212832;
+  text-align: right;
+  box-shadow: 0px 0px 0px 3px #31475e;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 300px;
+  display: grid;
+  align-items: center;
+}
+
+#user-prompt-wrapper {
+  width: calc(100% - 10px);
+  height: max-content;
+  background-color: transparent;
+  margin-bottom: 10px;
+  margin-top: 100px;
+  text-align: right;
+  place-items: right;
+  justify-items: right;
+  display: grid
 }
 
 @media screen and (min-width: 900px) {
@@ -82,7 +145,7 @@ html {
     border: none;
     background-color: #31475e;
     padding-left: 10px;
-    font-family: 'GSansMedium';
+    font-family: 'GSansRegular';
     color: #e8e8e8;
     font-size: 15px;
     position: unset;
@@ -100,4 +163,55 @@ html {
     cursor: pointer;
     right: unset
   }
+  #ai-answer {
+    width: calc(100% - 150px);
+    height: max-content;
+    background-color: transparent;
+    font-family: 'GSansRegular';
+    font-size: 16px;
+    line-height: 27px;
+    margin-left: 45px;
+  }
+  #ai-textbox{
+    width: calc(100% - 62%);
+    height: max-content;
+    min-height: 35px;
+    background-color:transparent;
+    position: absolute;
+    left:50%;
+    translate: -50%;
+  }
+  #user-prompt-wrapper {
+    width: calc(100% - 110px);
+    height: max-content;
+    background-color: transparent;
+    margin-bottom: 10px;
+    margin-top: 100px;
+    justify-items: right;
+    place-items: right;
+    display: grid
+  }
+  #greeting {
+    font-family: 'GSansBlack';
+    background: linear-gradient(to right bottom, #9050DA, #007AFF);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px
+  }
+}
+
+#greeting {
+  font-family: 'GSansBlack';
+  background: linear-gradient(to right bottom, #9050DA, #007AFF);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 37px;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  text-align: center;
 }
