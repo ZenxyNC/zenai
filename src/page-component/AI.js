@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import './AI.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReff, useRef } from 'react';
 import arrow from '../resource/arrow-up.svg';
 import '../resource/font/importFont.css';
 
@@ -12,15 +12,6 @@ export default function AI() {
   const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn'));
   const [username, setUsername] = useState('');
   const [greeting, setGreet] = useState(getGreeting());
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      setUsername(localStorage.getItem('username'));
-    } else {
-      setUsername(undefined);
-      setLog(false);
-    }
-  }, [isLoggedIn]);
 
   const runAI = async (e) => {
     e.preventDefault();
@@ -87,12 +78,21 @@ export default function AI() {
     }
   }
 
+  const focuselement = useRef(null);
+
+  useEffect(() => {
+    focuselement.current.focus()
+  }, [])
+
   return (
     <>
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
           ZenAI 1.0<span>(beta)</span>
+        </div>
+        <div id='user-info'>
+          Log in
         </div>
       </div>
       <div id='close-menu' onClick={() => setNavbar('hide')}></div>
@@ -111,6 +111,7 @@ export default function AI() {
           onInput={(e) => setUserPrompt(e.target.value)}
           id='ai-user-input'
           autoComplete='off'
+          ref={focuselement}
         />
         <button type='submit'><img src={arrow} alt='' id='submit-arrow' /></button>
       </form>
