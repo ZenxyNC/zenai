@@ -74,7 +74,7 @@ html {
   height: max-content;
   min-height: 35px;
   background-color:transparent;
-  position: absolute;
+  position: relative;
   left:50%;
   translate: -50%;
 }
@@ -87,7 +87,9 @@ html {
   font-size: 17px;
   line-height: 26px;
   margin-left: 45px;
+  white-space: pre-wrap;
 }
+
 #ai-profile {
   width: 35px;
   height: 35px;
@@ -112,7 +114,8 @@ html {
   max-width: 300px;
   display: grid;
   align-items: center;
-  font-family: 'GSansRegular'
+  font-family: 'GSansRegular';
+  white-space: pre-wrap;
 }
 
 #user-prompt-wrapper {
@@ -211,9 +214,9 @@ html {
   position: absolute;
   text-align: center;
   padding-top: 10px;
-  top: 10px;
-  left: 10px;
-  border-radius: 8px;
+  top: 5px;
+  left: 5px;
+  border-radius: 5px;
   font-family: 'GSansBlack';
   font-size: 18px
 }
@@ -301,13 +304,15 @@ html {
     font-size: 16px;
     line-height: 27px;
     margin-left: 45px;
+    white-space: pre-wrap;
   }
+
   #ai-textbox{
     width: calc(100% - 62%);
     height: max-content;
     min-height: 35px;
     background-color:transparent;
-    position: absolute;
+    position: relative;
     left: 60%;
     transform: translateX(-50%);
     translate: unset
@@ -363,4 +368,8 @@ html {
   width: 100%;
   text-align: center;
   transition: 0.25s;
+}
+
+::-webkit-scrollbar {
+  display: none
 }

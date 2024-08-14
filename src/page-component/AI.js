@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import './AI.css';
-import React, { useEffect, useState, useReff, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import arrow from '../resource/arrow-up.svg';
 import '../resource/font/importFont.css';
 
@@ -9,17 +9,40 @@ export default function AI() {
   const genAI = new GoogleGenerativeAI(API_KEY);
 
   const [userPrompt, setUserPrompt] = useState('');
+  const [AIResponse, setResponse] = useState('')
   const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn'));
   const [username, setUsername] = useState('');
   const [greeting, setGreet] = useState(getGreeting());
 
+  /*function displayChat() {
+    try {
+      document.getElementById('user-prompt-display').setAttribute('id', '')
+      document.getElementById('ai-answer').setAttribute('id', '')
+    } catch(err) {
+      console.log(err)
+    }
+    var createTextBox = document.createElement('div')
+    createTextBox.setAttribute('id', 'ai-textbox')
+    createTextBox.innerHTML = (
+      <>
+        <div id='user-prompt-wrapper'>
+          <div id='user-prompt-display' className='user-prompt-display'></div>
+        </div>
+        <div id='ai-profile'></div>
+        <div id='ai-answer' className='ai-answer'></div>
+      </>
+    )
+    document.getElementById('chatbox').appendChild(createTextBox)
+    document.getElementById('user-prompt-display').innerText = userPrompt;
+    document.getElementById('ai-answer').innerText = AIResponse
+  }*/
+
   const runAI = async (e) => {
     e.preventDefault();
-    document.getElementById('ai-answer').innerText = generatePrompt();
-    document.getElementById('user-prompt-display').innerText = userPrompt;
+    setResponse(generatePrompt())
+    document.getElementById('user-prompt-display').innerText = userPrompt
     document.getElementById('ai-user-input').value = '';
-    const aiResponse = await run();
-    document.getElementById('ai-answer').innerText = aiResponse;
+    run();
     document.getElementById('chatbox').style.opacity = 1;
     document.getElementById('greeting').style.opacity = 0;
   };
@@ -31,33 +54,45 @@ export default function AI() {
       history: [
         {
           role: "user",
-          parts: [{ text: "Kita pake bahasa yang gampang atau friendly ajaa, gausah terlalu kaku." }],
+          parts: [{ text: "Kita pake bahasa yang gampang atau friendly ajaa, tapi tetep sopan yaa." }],
         },
         {
           role: "model",
-          parts: [{ text: "" }],
+          parts: [{ text: "Got it!" }],
         },
       ],
     };
 
     try {
       const chat = model.startChat(chatHistory);
-      const result = await chat.sendMessage(userPrompt);
+      const result = await chat.sendMessageStream(userPrompt);
       const response = await result.response;
-      return response.text();
+      var answer = response.text();
+      setResponse(answer)
     } catch (error) {
       return "Your request couldn't be processed due to an error: " + error;
     }
   }
 
   function generatePrompt() {
-    const maths = Math.floor(Math.random() * 30) + 1;
+    const maths = Math.floor(Math.random() * 80) + 1;
     if (maths <= 10) {
-      return "AI is thinking..";
+      return "Thinking best answer..";
     } else if (maths <= 20) {
-      return "One moment, please!";
-    } else {
-      return "Understood, preparing for your answer!";
+      return "One moment!";
+    } else if (maths <= 30) {
+      return "Creating creative answer.."
+    } else if (maths <=40) {
+      return "On it, Good things are coming!"
+    } else if (maths <= 50) {
+      return "Almost there.."
+    } else if (maths <= 60) {
+      return "Thinking in different angle.."
+    } else if (maths <= 70) {
+      return "Asking my friend.."
+    }
+    else {   
+      return "AI is thinking..";
     }
   }
 
@@ -112,6 +147,7 @@ export default function AI() {
           id='ai-user-input'
           autoComplete='off'
           ref={focuselement}
+          required
         />
         <button type='submit'><img src={arrow} alt='' id='submit-arrow' /></button>
       </form>
@@ -121,7 +157,7 @@ export default function AI() {
             <div id='user-prompt-display'></div>
           </div>
           <div id='ai-profile'></div>
-          <div id='ai-answer'></div>
+          <div id='ai-answer'>{AIResponse}</div>
         </div>
       </div>
     </>
