@@ -136,7 +136,7 @@ export default function AI() {
         <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
           {username}
         </div>
-        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`}>
+        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`} onClick={() => navigate('/zenai/AI#settings', {replace : false})}>
         </div>
       </div>
       <div id='close-menu' onClick={() => setNavbar('hide')}></div>
