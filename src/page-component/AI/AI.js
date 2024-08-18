@@ -1,41 +1,34 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import './AI.css';
 import React, { useEffect, useState, useRef } from 'react';
-import arrow from '../resource/arrow-up.svg';
-import '../resource/font/importFont.css';
+import arrow from '../../resource/arrow-up.svg';
+import '../../resource/font/importFont.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function AI() {
+  const navigate = useNavigate()
   const API_KEY = "AIzaSyAD8RiUySiuEdH5hWT8oTi1YPc_WphUnhI";
   const genAI = new GoogleGenerativeAI(API_KEY);
 
+
   const [userPrompt, setUserPrompt] = useState('');
   const [AIResponse, setResponse] = useState('')
+  // eslint-disable-next-line
   const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn'));
-  const [username, setUsername] = useState('');
+  // eslint-disable-next-line
+  const [username, setUsername] = useState('Log in');
+  // eslint-disable-next-line
   const [greeting, setGreet] = useState(getGreeting());
 
-  /*function displayChat() {
-    try {
-      document.getElementById('user-prompt-display').setAttribute('id', '')
-      document.getElementById('ai-answer').setAttribute('id', '')
-    } catch(err) {
-      console.log(err)
-    }
-    var createTextBox = document.createElement('div')
-    createTextBox.setAttribute('id', 'ai-textbox')
-    createTextBox.innerHTML = (
-      <>
-        <div id='user-prompt-wrapper'>
-          <div id='user-prompt-display' className='user-prompt-display'></div>
-        </div>
-        <div id='ai-profile'></div>
-        <div id='ai-answer' className='ai-answer'></div>
-      </>
-    )
-    document.getElementById('chatbox').appendChild(createTextBox)
-    document.getElementById('user-prompt-display').innerText = userPrompt;
-    document.getElementById('ai-answer').innerText = AIResponse
-  }*/
+  try {
+    useEffect(() => {
+      if(isLoggedIn) {
+        setUsername(localStorage.getItem('username'))
+      }
+    }, [isLoggedIn])
+  } catch(error) {
+    console.log(error)
+  }
 
   const runAI = async (e) => {
     e.preventDefault();
@@ -68,7 +61,13 @@ export default function AI() {
       const result = await chat.sendMessageStream(userPrompt);
       const response = await result.response;
       var answer = response.text();
-      setResponse(answer)
+      try {
+        var categorized = answer.replace(/(?<!\*)\*(?!\*)/g, '•')
+        var formattedAnswer = categorized.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      } catch(err) {
+        console.log('No format needed')
+      }
+      setResponse(formattedAnswer)
     } catch (error) {
       return "Your request couldn't be processed due to an error: " + error;
     }
@@ -113,6 +112,14 @@ export default function AI() {
     }
   }
 
+  function proceedRedirect() {
+    if(isLoggedIn) {
+
+    } else if (isLoggedIn !== true) {
+      navigate('/zenai/login', {replace : true})
+    }
+  }
+
   const focuselement = useRef(null);
 
   useEffect(() => {
@@ -126,18 +133,20 @@ export default function AI() {
         <div id="model-selection">
           ZenAI 1.0<span>(beta)</span>
         </div>
-        <div id='user-info'>
-          Log in
+        <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
+          {username}
+        </div>
+        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`}>
         </div>
       </div>
       <div id='close-menu' onClick={() => setNavbar('hide')}></div>
       <div id='navbar'>
         <div id='navbar-logo'></div>
         <span id='navbar-title'>ZenAI</span>
-        <div className='nav-menu-button-wrap' onClick={() => setNavbar('show')}>
+        <button className='nav-menu-button-wrap' onClick={() => setNavbar('show')}>
           <div></div>
           <div></div>
-        </div>
+        </button>
       </div>
       <form onSubmit={runAI} id='ai-input-field'>
         <input
@@ -157,7 +166,7 @@ export default function AI() {
             <div id='user-prompt-display'></div>
           </div>
           <div id='ai-profile'></div>
-          <div id='ai-answer'>{AIResponse}</div>
+          <div id='ai-answer' dangerouslySetInnerHTML={{ __html: AIResponse }}></div>
         </div>
       </div>
     </>

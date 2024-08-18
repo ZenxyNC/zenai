@@ -1,0 +1,185 @@
+
+
+#base-div-wrapper {
+  width: 100%;
+  height: calc(100% - 50%);
+  background-color: transparent;
+  position: absolute;
+  transition: 0.32s;
+  top: 20%;
+  transform: translateY(-20%);
+}
+#base-div-wrapper img:nth-child(1) {
+  width: 140px;
+  position: relative;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+#input-username {
+  width: calc((100% - 40%) - 4px);
+  height: 35px;
+  font-family: 'GSansRegular';
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px rgb(232, 232, 232, 0.5) solid;
+  border-radius: 6px;
+  color: #E8E8E8;
+  padding-left: 5px;
+  transition: 0.5s
+}
+
+#login-input-field {
+  width: 100%;
+  height: unset;
+  background-color: transparent;
+  text-align: center;
+  margin-top: 40px
+}
+
+input {
+  outline: none;
+}
+input::placeholder {
+  font-family: 'GSansRegular';
+  font-size: 16px;
+  color: rgb(232, 232, 232, 0.5)
+}
+
+#password-element-wrapper {
+  margin-top: 5px
+}
+
+#input-password {
+  width: calc((100% - 40%) - 80px);
+  margin-right: 5px;
+  position: relative;
+  top: -9px;
+  height: 35px;
+  border-radius: 6px;
+  border: 1px solid rgb(232, 232, 232, 0.5);
+  background-color: transparent;
+  color: #E8E8E8;
+  padding-left: 5px;
+  transition: 0.5s
+}
+
+#submit-loginInfo {
+  background-color: transparent;
+  border: 1px solid rgb(232, 232, 232, 0.5);
+  height: 39px;
+  width: 70px;
+  border-radius: 6px;
+  cursor: pointer
+}
+#submit-loginInfo:hover img:nth-child(1) {
+  width: 30px;
+  position: relative;
+  top: 17px;
+  rotate: 90deg;
+  left: 0px;
+  animation: animateArrow 2s forwards infinite ease-in-out;
+  transition: 0.5s
+}
+#submit-loginInfo img:nth-child(1) {
+  width: 30px;
+  position: relative;
+  top: 17px;
+  rotate: 90deg;
+  left: 0%;
+}
+@keyframes animateArrow {
+  0% {
+    left: -10%
+  } 50% {
+    left: 10%
+  } 100% {
+    left: -10%
+  }
+}
+
+#base-div-wrapper span:nth-child(3) {
+  position: absolute;
+  bottom: 15px;
+  color: #007AFF;
+  font-family: 'GSansMedium';
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+@media screen and (min-width: 900px) {
+  #base-div-wrapper{
+    width: calc(100% - 68%);
+    height: calc(100% - 50%);
+    background-color: rgb(49, 71, 94, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px -10px #31475E
+  }
+  #base-div-wrapper img:nth-child(1) {
+    width: 140px;
+    position: relative;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+  #input-username {
+    width: calc(100% - 40%);
+    height: 35px;
+    font-family: 'GSansRegular';
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px rgb(232, 232, 232, 0.5) solid;
+    border-radius: 6px;
+    color: #E8E8E8
+  }
+  
+  #login-input-field {
+    width: 100%;
+    height: unset;
+    background-color: transparent;
+    text-align: center;
+    margin-top: 40px
+  }
+  
+  input {
+    outline: none;
+  }
+  
+  #password-element-wrapper {
+    margin-top: 5px
+  }
+  
+  #input-password {
+    width: calc((100% - 40%) - 76px);
+    margin-right: 5px;
+    position: relative;
+    top: -9px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid rgb(232, 232, 232, 0.5);
+    background-color: transparent;
+    color: #E8E8E8
+  }
+  
+  #submit-loginInfo {
+    background-color: transparent;
+    border: 1px solid rgb(232, 232, 232, 0.5);
+    height: 39px;
+    width: 70px;
+    border-radius: 6px
+  }
+  #submit-loginInfo img:nth-child(1) {
+    width: 30px;
+    position: relative;
+    top: 17px;
+    rotate: 90deg;
+    left: 0%;
+  }
+}

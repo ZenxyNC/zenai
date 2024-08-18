@@ -1,4 +1,5 @@
-import AI from './page-component/AI.js'
+import AI from './page-component/AI/AI.js'
+import Login from './page-component/login/login.js'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
 import { useEffect } from 'react'
@@ -8,8 +9,9 @@ export default function Navigation() {
     <>
       <Router>
         <Routes>
-          <Route path="/zenai/AI" element={<AI />}/>
-          <Route path="/*" element={<MainApp />}/>
+          <Route path="/zenai/AI" element = {<AI />}/>
+          <Route path='/zenai/login' element = {<Login />} />
+          <Route path="/*" element = {<MainApp />}/>
         </Routes>
       </Router>
     </>

@@ -39,7 +39,7 @@ html {
 }
 #ai-input-field button {
   width: 42px;
-  margin-left: 10px;
+  margin-left: 5px;
   height: 42px;
   position: absolute;
   bottom: 0px;
@@ -48,7 +48,8 @@ html {
   background-image: linear-gradient(to bottom right, #9050DA, #007AFF);
   cursor: pointer;
   right: 10px;
-  transition: 0.3s
+  transition: 0.3s;
+  user-select: none;
 }
 
 #submit-arrow {
@@ -56,7 +57,8 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  opacity: 1
 }
 
 #chatbox {
@@ -95,7 +97,7 @@ html {
   height: 35px;
   border-radius: 30px;
   background-color: #1e1e1e;
-  background-image: url('../resource/icon.svg');
+  background-image: url('../../resource/icon.svg');
   background-position:center;
   background-size: 28px;
   background-repeat: no-repeat;
@@ -150,12 +152,13 @@ html {
   width: 40px;
   height: 50px;
   position: absolute;
-  right: 0px;
+  right: 5px;
   top: 0px;
   background-color: transparent;
   display: grid;
   align-items: center;
-  cursor: pointer
+  cursor: pointer;
+  border: none
 }
 .nav-menu-button-wrap div:nth-child(1) {
   width: 26px;
@@ -172,7 +175,7 @@ html {
   margin-top: -15px;
 }
 #navbar-logo {
-  background-image: url('../resource/icon.svg');
+  background-image: url('../../resource/icon.svg');
   background-size: 35px;
   width: 40px;
   height: 40px;
@@ -239,7 +242,7 @@ html {
   transform: translateX(-100%)
 }
 
-#user-info {
+.user-info.isNotLoggedIn {
   width: calc(100% - 10px);
   height: 45px;
   background-color: rgb(33, 40, 50, 0.7);
@@ -253,6 +256,49 @@ html {
   place-items: center;
   align-items: center;
   cursor: pointer
+}
+.user-info.isLoggedIn {
+  width: calc(100% - 60px);
+  height: 45px;
+  background-color: rgb(33, 40, 50, 0.7);
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  border-radius: 5px;
+  font-family: 'GSansBold';
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  align-items: center;
+  cursor: pointer 
+}
+
+.app-settings.shown {
+  width: 45px;
+  height: 45px;
+  background-color: rgb(33, 40, 50, 0.7);
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 5px;
+  background-image: url('../../resource/cog.svg');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white
+}
+.app-settings.shown:hover {
+  width: 45px;
+  height: 45px;
+  background-color: rgb(33, 40, 50, 0.7);
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 5px;
+  background-image: url('../../resource/cog.svg');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (min-width: 900px) {
@@ -281,11 +327,13 @@ html {
     color: #e8e8e8;
     font-size: 15px;
     position: unset;
-    left: unset
+    left: unset;
+    white-space: pre-wrap;
+    text-wrap: wrap;
   }
   #ai-input-field button {
     width: 42px;
-    margin-left: 10px;
+    margin-left: 5px;
     height: 42px;
     position: absolute;
     bottom: 0px;
