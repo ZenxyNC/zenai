@@ -145,7 +145,7 @@ export default function AI() {
     window.alert("Restricted Access. Developer only entry!")
     var reqPasscode = window.prompt('Password?')
     if (reqPasscode === 'Lucas.2308') {
-      document.getElementById('hibernated-screen').style.dislpay = 'none'
+      document.getElementById('hibernated-screen').style.display = 'none'
     } else {
       window.alert('Incorrect password')
     }
