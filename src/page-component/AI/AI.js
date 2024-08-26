@@ -20,6 +20,21 @@ export default function AI() {
   // eslint-disable-next-line
   const [greeting, setGreet] = useState(getGreeting());
 
+
+  var chatHistory = {
+    history: [
+      {
+        role: "user",
+        parts: [{ text: "Kita pake bahasa yang gampang atau friendly ajaa, tapi tetep sopan yaa." }],
+      },
+      {
+        role: "model",
+        parts: [{ text: "Got it!" }],
+      },
+    ],
+  };
+  var currentUserPrompt
+
   try {
     useEffect(() => {
       if(isLoggedIn) {
@@ -34,6 +49,7 @@ export default function AI() {
     e.preventDefault();
     setResponse(generatePrompt())
     document.getElementById('user-prompt-display').innerText = userPrompt
+    currentUserPrompt = document.getElementById('ai-user-input').value
     document.getElementById('ai-user-input').value = '';
     run();
     document.getElementById('chatbox').style.opacity = 1;
@@ -42,19 +58,6 @@ export default function AI() {
 
   async function run() {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    const chatHistory = {
-      history: [
-        {
-          role: "user",
-          parts: [{ text: "Kita pake bahasa yang gampang atau friendly ajaa, tapi tetep sopan yaa." }],
-        },
-        {
-          role: "model",
-          parts: [{ text: "Got it!" }],
-        },
-      ],
-    };
 
     try {
       const chat = model.startChat(chatHistory);
@@ -66,6 +69,19 @@ export default function AI() {
         var formattedAnswer = categorized.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       } catch(err) {
         console.log('No format needed')
+      }
+      try {
+        chatHistory.history.push({
+          role: "user",
+          parts: [{ text: currentUserPrompt }],
+        });
+        chatHistory.history.push({
+          role: "model",
+          parts: [{ text: answer }],
+        });
+        console.log('Memory updated.')
+      } catch (err) {
+        console.log(err)
       }
       setResponse(formattedAnswer)
     } catch (error) {
@@ -125,9 +141,24 @@ export default function AI() {
   useEffect(() => {
     focuselement.current.focus()
   }, [])
+  function requestPasscode() {
+    window.alert("Restricted Access. Developer only entry!")
+    var reqPasscode = window.prompt('Password?')
+    if (reqPasscode === 'Lucas.2308') {
+      document.getElementById('hibernated-screen').style.dislpay = 'none'
+    } else {
+      window.alert('Incorrect password')
+    }
+  }
 
   return (
     <>
+      <div id='hibernated-screen'>
+        <div id='hibernated-layout-div'>
+          <div id='hibernated-logo' onDoubleClick={requestPasscode}></div>
+          <div id='hibernated-title'>ZenAI is currently hibernated for a while.</div>
+        </div>
+      </div>
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
