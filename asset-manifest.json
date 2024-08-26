@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/zenai/static/css/main.497bf589.css",
-    "main.js": "/zenai/static/js/main.d3c29de1.js",
+    "main.css": "/zenai/static/css/main.666dcedb.css",
+    "main.js": "/zenai/static/js/main.d84cfc05.js",
     "static/js/453.42e71653.chunk.js": "/zenai/static/js/453.42e71653.chunk.js",
+    "static/media/Hibernated.png": "/zenai/static/media/Hibernated.721234d0113edd36fd04.png",
     "static/media/ProductSans-Regular.ttf": "/zenai/static/media/ProductSans-Regular.2765c69613690b1b9c03.ttf",
     "static/media/ProductSans-Thin.ttf": "/zenai/static/media/ProductSans-Thin.cc886c2747bf6f2c4888.ttf",
     "static/media/ProductSans-Light.ttf": "/zenai/static/media/ProductSans-Light.1dde435cdc2a9b6a7130.ttf",
@@ -13,12 +14,12 @@
     "static/media/icon.svg": "/zenai/static/media/icon.c0bce36464afe8a7be195b133a2fad73.svg",
     "index.html": "/zenai/index.html",
     "static/media/arrow-up.svg": "/zenai/static/media/arrow-up.ae2f1cb7ed5e80365bed7c223d4ae569.svg",
-    "main.497bf589.css.map": "/zenai/static/css/main.497bf589.css.map",
-    "main.d3c29de1.js.map": "/zenai/static/js/main.d3c29de1.js.map",
+    "main.666dcedb.css.map": "/zenai/static/css/main.666dcedb.css.map",
+    "main.d84cfc05.js.map": "/zenai/static/js/main.d84cfc05.js.map",
     "453.42e71653.chunk.js.map": "/zenai/static/js/453.42e71653.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.497bf589.css",
-    "static/js/main.d3c29de1.js"
+    "static/css/main.666dcedb.css",
+    "static/js/main.d84cfc05.js"
   ]
 }
