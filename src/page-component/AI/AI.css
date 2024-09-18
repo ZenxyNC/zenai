@@ -308,7 +308,8 @@ html {
   left: 0px;
   background-color: rgb(49, 71, 94, 0.5);
   backdrop-filter: blur(20px);
-  z-index: 100000
+  z-index: 100000;
+  display: none
 }
 #hibernated-logo {
   width: 100px;
@@ -455,4 +456,4 @@ html {
 
 ::-webkit-scrollbar {
   display: none
-}
+}   
