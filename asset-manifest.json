@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/zenai/static/css/main.666dcedb.css",
+    "main.css": "/zenai/static/css/main.0ee294d7.css",
     "main.js": "/zenai/static/js/main.f24cd137.js",
     "static/js/453.42e71653.chunk.js": "/zenai/static/js/453.42e71653.chunk.js",
     "static/media/Hibernated.png": "/zenai/static/media/Hibernated.721234d0113edd36fd04.png",
@@ -14,12 +14,12 @@
     "static/media/icon.svg": "/zenai/static/media/icon.c0bce36464afe8a7be195b133a2fad73.svg",
     "index.html": "/zenai/index.html",
     "static/media/arrow-up.svg": "/zenai/static/media/arrow-up.ae2f1cb7ed5e80365bed7c223d4ae569.svg",
-    "main.666dcedb.css.map": "/zenai/static/css/main.666dcedb.css.map",
+    "main.0ee294d7.css.map": "/zenai/static/css/main.0ee294d7.css.map",
     "main.f24cd137.js.map": "/zenai/static/js/main.f24cd137.js.map",
     "453.42e71653.chunk.js.map": "/zenai/static/js/453.42e71653.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.666dcedb.css",
+    "static/css/main.0ee294d7.css",
     "static/js/main.f24cd137.js"
   ]
 }
