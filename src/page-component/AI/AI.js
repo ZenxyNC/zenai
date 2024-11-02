@@ -9,12 +9,13 @@ export default function AI() {
   const navigate = useNavigate()
   const API_KEY = "AIzaSyAD8RiUySiuEdH5hWT8oTi1YPc_WphUnhI";
   const genAI = new GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
   const [userPrompt, setUserPrompt] = useState('');
   const [AIResponse, setResponse] = useState('')
   // eslint-disable-next-line
-  const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn'));
+  const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn-zenai'));
   // eslint-disable-next-line
   const [username, setUsername] = useState('Log in');
   // eslint-disable-next-line
@@ -25,20 +26,35 @@ export default function AI() {
     history: [
       {
         role: "user",
-        parts: [{ text: "Kita pake bahasa yang gampang atau friendly ajaa, tapi tetep sopan yaa." }],
+        parts: [{ text: "Kita pake bahasa yang friendly ajaa, tapi tetep sopan yaa." }],
       },
       {
         role: "model",
-        parts: [{ text: "Got it!" }],
-      },
-    ],
-  };
+        parts: [{ text: "Oke!" }],
+      }
+    ]
+  }
+
+  function addNewMemory() {
+    var newMessage = {
+      role: "user",
+      parts: [{ text: "Aku sekarang punya 30 apel." }]
+    }
+    var AIMessageVirt = {
+      role: "model",
+      parts: [{ text: "oke." }]
+    }
+    chatHistory.history.push(newMessage);
+    chatHistory.history.push(AIMessageVirt);
+    console.log(chatHistory.history)
+    console.log("Couldn't update memory.")
+  }
   var currentUserPrompt
 
   try {
     useEffect(() => {
       if(isLoggedIn) {
-        setUsername(localStorage.getItem('username'))
+        setUsername(localStorage.getItem('username-zenai'))
       }
     }, [isLoggedIn])
   } catch(error) {
@@ -57,11 +73,10 @@ export default function AI() {
   };
 
   async function run() {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     try {
       const chat = model.startChat(chatHistory);
-      const result = await chat.sendMessageStream(userPrompt);
+      const result = chat.sendMessage(userPrompt);
       const response = await result.response;
       var answer = response.text();
       try {
@@ -69,19 +84,6 @@ export default function AI() {
         var formattedAnswer = categorized.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       } catch(err) {
         console.log('No format needed')
-      }
-      try {
-        chatHistory.history.push({
-          role: "user",
-          parts: [{ text: currentUserPrompt }],
-        });
-        chatHistory.history.push({
-          role: "model",
-          parts: [{ text: answer }],
-        });
-        console.log('Memory updated.')
-      } catch (err) {
-        console.log(err)
       }
       setResponse(formattedAnswer)
     } catch (error) {
@@ -109,6 +111,10 @@ export default function AI() {
     else {   
       return "AI is thinking..";
     }
+  }
+
+  function abortGeneration() {
+
   }
 
   function getGreeting() {
@@ -162,7 +168,7 @@ export default function AI() {
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
-          ZenAI 1.0<span>(beta)</span>
+          ZenAI 1.0
         </div>
         <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
           {username}

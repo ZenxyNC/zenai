@@ -35,9 +35,9 @@ export default function Login() {
         if (passwordValid) {
           document.getElementById('input-password').style.border = '1px solid rgb(232, 232, 232, 0.5)'
           localStorage.clear()
-          localStorage.setItem('isLoggedIn', true)
-          localStorage.setItem('username', username)
-          console.log(localStorage.getItem('isLoggedIn'), localStorage.getItem('username'))
+          localStorage.setItem('isLoggedIn-zenai', true)
+          localStorage.setItem('username-zenai', username)
+          console.log(localStorage.getItem('isLoggedIn-zenai'), localStorage.getItem('username-zenai'))
           navigate('/zenai/AI', {replace : true})
         } else {
           document.getElementById('input-password').style.border = '1px solid red'

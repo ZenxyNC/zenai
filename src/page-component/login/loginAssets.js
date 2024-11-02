@@ -4,7 +4,7 @@ export const userdata = [
     "password" : "LucasDev2308"
   },
   {
-    "username" : "Cella Vanessa",
-    "password" : "CellaV2089"
+    "username" : "ZenGuest",
+    "password" : "ZenGuest@1"
   }
 ]
