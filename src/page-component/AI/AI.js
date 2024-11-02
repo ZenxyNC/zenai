@@ -21,34 +21,6 @@ export default function AI() {
   // eslint-disable-next-line
   const [greeting, setGreet] = useState(getGreeting());
 
-
-  var chatHistory = {
-    history: [
-      {
-        role: "user",
-        parts: [{ text: "Kita pake bahasa yang friendly ajaa, tapi tetep sopan yaa." }],
-      },
-      {
-        role: "model",
-        parts: [{ text: "Oke!" }],
-      }
-    ]
-  }
-
-  function addNewMemory() {
-    var newMessage = {
-      role: "user",
-      parts: [{ text: "Aku sekarang punya 30 apel." }]
-    }
-    var AIMessageVirt = {
-      role: "model",
-      parts: [{ text: "oke." }]
-    }
-    chatHistory.history.push(newMessage);
-    chatHistory.history.push(AIMessageVirt);
-    console.log(chatHistory.history)
-    console.log("Couldn't update memory.")
-  }
   var currentUserPrompt
 
   try {
@@ -74,9 +46,22 @@ export default function AI() {
 
   async function run() {
 
+    var chatHistory = {
+      history: [
+        {
+          role: "user",
+          parts: [{ text: "Kita pake bahasa yang friendly ajaa, tapi tetep sopan yaa." }],
+        },
+        {
+          role: "model",
+          parts: [{ text: "Oke!" }],
+        }
+      ]
+    }
+
     try {
       const chat = model.startChat(chatHistory);
-      const result = chat.sendMessage(userPrompt);
+      const result = await chat.sendMessageStream(userPrompt);
       const response = await result.response;
       var answer = response.text();
       try {
@@ -106,10 +91,10 @@ export default function AI() {
     } else if (maths <= 60) {
       return "Thinking in different angle.."
     } else if (maths <= 70) {
-      return "Asking my friend.."
+      return "Thinking best answer.."
     }
     else {   
-      return "AI is thinking..";
+      return "Finding more information..";
     }
   }
 
@@ -168,7 +153,7 @@ export default function AI() {
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
-          ZenAI 1.0
+          ZenAI 1.0<span>(test unit)</span>
         </div>
         <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
           {username}
