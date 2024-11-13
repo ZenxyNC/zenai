@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AI() {
   const navigate = useNavigate()
-  const API_KEY = "AIzaSyAD8RiUySiuEdH5hWT8oTi1YPc_WphUnhI";
+  const API_KEY = "AIzaSyD7V9IcZi78typV71XmIVb6cIJy-E-hh_0";
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -61,7 +61,7 @@ export default function AI() {
 
     try {
       const chat = model.startChat(chatHistory);
-      const result = await chat.sendMessageStream(userPrompt);
+      const result = await chat.sendMessage(userPrompt);
       const response = await result.response;
       var answer = response.text();
       try {
@@ -127,15 +127,15 @@ export default function AI() {
     }
   }
 
-  const focuselement = useRef(null);
+  //const focuselement = useRef(null);
 
-  useEffect(() => {
-    focuselement.current.focus()
-  }, [])
+  //useEffect(() => {
+    //focuselement.current.focus()
+  //}, [])
   function requestPasscode() {
     window.alert("Restricted Access. Developer only entry!")
     var reqPasscode = window.prompt('Password?')
-    if (reqPasscode === 'Lucas.2308') {
+    if (reqPasscode === 'LucasDev2308') {
       document.getElementById('hibernated-screen').style.display = 'none'
     } else {
       window.alert('Incorrect password')
@@ -177,7 +177,7 @@ export default function AI() {
           onInput={(e) => setUserPrompt(e.target.value)}
           id='ai-user-input'
           autoComplete='off'
-          ref={focuselement}
+          //ref = {focuselement}
           required
         />
         <button type='submit'><img src={arrow} alt='' id='submit-arrow' /></button>

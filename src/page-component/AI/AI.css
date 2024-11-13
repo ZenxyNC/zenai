@@ -309,7 +309,7 @@ html {
   background-color: rgb(49, 71, 94, 0.5);
   backdrop-filter: blur(20px);
   z-index: 100000;
-  display: none
+  display: block
 }
 #hibernated-logo {
   width: 100px;
