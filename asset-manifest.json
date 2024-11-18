@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zenai/static/css/main.ce7e3480.css",
-    "main.js": "/zenai/static/js/main.79d0867d.js",
+    "main.css": "/zenai/static/css/main.16b90ae4.css",
+    "main.js": "/zenai/static/js/main.a0aa7f28.js",
     "static/js/453.42e71653.chunk.js": "/zenai/static/js/453.42e71653.chunk.js",
     "static/media/Hibernated.png": "/zenai/static/media/Hibernated.721234d0113edd36fd04.png",
     "static/media/ProductSans-Regular.ttf": "/zenai/static/media/ProductSans-Regular.2765c69613690b1b9c03.ttf",
@@ -12,14 +12,15 @@
     "static/media/ProductSans-Black.ttf": "/zenai/static/media/ProductSans-Black.99679fcb879a842df8c5.ttf",
     "static/media/cog.svg": "/zenai/static/media/cog.db5c390209c152eb8bbe.svg",
     "static/media/icon.svg": "/zenai/static/media/icon.c0bce36464afe8a7be195b133a2fad73.svg",
+    "static/media/dropdown-arrow.svg": "/zenai/static/media/dropdown-arrow.df770b1b0741463060c07d4bde73ede1.svg",
     "index.html": "/zenai/index.html",
     "static/media/arrow-up.svg": "/zenai/static/media/arrow-up.ae2f1cb7ed5e80365bed7c223d4ae569.svg",
-    "main.ce7e3480.css.map": "/zenai/static/css/main.ce7e3480.css.map",
-    "main.79d0867d.js.map": "/zenai/static/js/main.79d0867d.js.map",
+    "main.16b90ae4.css.map": "/zenai/static/css/main.16b90ae4.css.map",
+    "main.a0aa7f28.js.map": "/zenai/static/js/main.a0aa7f28.js.map",
     "453.42e71653.chunk.js.map": "/zenai/static/js/453.42e71653.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce7e3480.css",
-    "static/js/main.79d0867d.js"
+    "static/css/main.16b90ae4.css",
+    "static/js/main.a0aa7f28.js"
   ]
 }
