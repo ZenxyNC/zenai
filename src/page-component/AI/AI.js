@@ -1,15 +1,13 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 import './AI.css';
 import React, { useEffect, useState, useRef } from 'react';
 import arrow from '../../resource/arrow-up.svg';
+import dropdown from '../../resource/dropdown-arrow.svg'
 import '../../resource/font/importFont.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function AI() {
   const navigate = useNavigate()
-  const API_KEY = "AIzaSyD7V9IcZi78typV71XmIVb6cIJy-E-hh_0";
-  const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
   const [userPrompt, setUserPrompt] = useState('');
@@ -60,10 +58,15 @@ export default function AI() {
     }
 
     try {
+      const API_KEY = "AIzaSyD8BWYUec1ZEqn8rRhnFexQjnEoQ4IJepU";
+      const genAI = new GoogleGenerativeAI(API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const chat = model.startChat(chatHistory);
       const result = await chat.sendMessage(userPrompt);
       const response = await result.response;
       var answer = response.text();
+       
+      
       try {
         var categorized = answer.replace(/(?<!\*)\*(?!\*)/g, '•')
         var formattedAnswer = categorized.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -72,7 +75,7 @@ export default function AI() {
       }
       setResponse(formattedAnswer)
     } catch (error) {
-      return "Your request couldn't be processed due to an error: " + error;
+      setResponse("Your request couldn't be processed due to an error: <br><span id='redify'>" + error + ".</span>");
     }
   }
 
@@ -106,7 +109,7 @@ export default function AI() {
     const hours = new Date().getHours();
     const timeOfDay = hours < 12 ? "morning" : hours < 18 ? "afternoon" : "night";
 
-    return `Good ${timeOfDay}.`;
+    return `Good ${timeOfDay}. How can I help you?`;
   }
 
   function setNavbar(type) {
@@ -127,16 +130,15 @@ export default function AI() {
     }
   }
 
-  //const focuselement = useRef(null);
+  const focuselement = useRef(null);
 
-  //useEffect(() => {
-    //focuselement.current.focus()
-  //}, [])
+  /*useEffect(() => {
+    focuselement.current.focus()
+  }, [])*/
   function requestPasscode() {
-    window.alert("Restricted Access. Developer only entry!")
-    var reqPasscode = window.prompt('Password?')
-    if (reqPasscode === 'LucasDev2308') {
-      document.getElementById('hibernated-screen').style.display = 'none'
+    var reqPasscode = window.prompt('Verification code')
+    if (reqPasscode === 'l2308cs') {
+      document.getElementById('hibernated-screen').style.display = 'none';
     } else {
       window.alert('Incorrect password')
     }
@@ -147,13 +149,14 @@ export default function AI() {
       <div id='hibernated-screen'>
         <div id='hibernated-layout-div'>
           <div id='hibernated-logo' onDoubleClick={requestPasscode}></div>
-          <div id='hibernated-title'>ZenAI is currently hibernated for a while.</div>
+          <div id='hibernated-title'>ZenAI is being updated. Check what's will be <span>updated</span>.</div>
         </div>
       </div>
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
-          ZenAI 1.0<span>(test unit)</span>
+          ZenAI 1.0
+          <img src={dropdown} alt='' id='model-dropdown'/>
         </div>
         <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
           {username}

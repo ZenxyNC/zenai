@@ -211,17 +211,20 @@ html {
   transition: 0.2s
 }
 #model-selection {
-  width: 150px;
-  height: 32px;
-  background-image: linear-gradient(30deg, #9050DA, #007AFF);
+  width: calc(100% - 20px);
+  height: 45px;
+  background-color: #212832;
   position: absolute;
-  text-align: center;
-  padding-top: 10px;
   top: 5px;
   left: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'GSansBlack';
-  font-size: 18px
+  font-size: 18px;
+  padding-left: 10px;
+  align-items: center;
+  display: grid;
+  cursor: pointer
+  
 }
 #model-selection span:nth-child(1) {
   font-family: 'GSansRegular';
@@ -249,7 +252,7 @@ html {
   position: absolute;
   bottom: 5px;
   left: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'GSansBold';
   font-size: 20px;
   display: grid;
@@ -264,7 +267,7 @@ html {
   position: absolute;
   bottom: 5px;
   left: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'GSansBold';
   font-size: 20px;
   display: grid;
@@ -280,26 +283,14 @@ html {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-image: url('../../resource/cog.svg');
   background-size: 30px;
   background-repeat: no-repeat;
   background-position: center;
   color: white
 }
-.app-settings.shown:hover {
-  width: 45px;
-  height: 45px;
-  background-color: rgb(33, 40, 50, 0.7);
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  border-radius: 5px;
-  background-image: url('../../resource/cog.svg');
-  background-size: 30px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+
 #hibernated-screen {
   width: 100%;
   height: 100%;
@@ -336,10 +327,25 @@ html {
   left: 50%;
   text-align: center;
 }
+#hibernated-title span{
+  color: #007AFF;
+  text-decoration: underline;
+  cursor: pointer;
+  user-select: none
+}
+
+#redify{
+  color: red
+}
+
+#model-dropdown{
+  position: absolute;
+  right: 10px
+}
 
 @media screen and (min-width: 900px) {
   #ai-input-field {
-    width: 100%;
+    width: 100%; 
     position: fixed;
     bottom: 10px;
     left: 57%;
@@ -413,7 +419,7 @@ html {
   }
   #greeting {
     font-family: 'GSansBlack';
-    background: linear-gradient(to right bottom, #9050DA, #007AFF);
+    color: white;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 50px;
@@ -437,13 +443,13 @@ html {
     backdrop-filter: blur(18px);
     transition: 0.35s ease all;
     transform: unset;
-    border-radius: 8px
+    border-radius: 15px
   }
 }
 
 #greeting {
   font-family: 'GSansBlack';
-  background: linear-gradient(to right bottom, #9050DA, #007AFF);
+  background: white;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-size: 37px;

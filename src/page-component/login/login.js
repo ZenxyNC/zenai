@@ -75,6 +75,8 @@ export default function Login() {
           <span onClick={() => updateLogin('asGuest')}>Enter as guest</span>
         </form>
       </div>
+      <div className='circle blue'></div>
+      <div className='circle purple'></div>
     </>
   )
 }
