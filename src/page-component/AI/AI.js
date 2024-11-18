@@ -1,14 +1,15 @@
-import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import './AI.css';
 import React, { useEffect, useState, useRef } from 'react';
 import arrow from '../../resource/arrow-up.svg';
 import dropdown from '../../resource/dropdown-arrow.svg'
 import '../../resource/font/importFont.css';
-import { useNavigate } from 'react-router-dom';
+import Settings from '../settings/settings'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function AI() {
   const navigate = useNavigate()
-
+  const location = useLocation()
 
   const [userPrompt, setUserPrompt] = useState('');
   const [AIResponse, setResponse] = useState('')
@@ -124,7 +125,12 @@ export default function AI() {
 
   function proceedRedirect() {
     if(isLoggedIn) {
-
+      let confirmRelogin = window.confirm("You will be logged out from " + username + " and directed to login page. Continue?")
+      if(confirmRelogin) {
+        navigate('/zenai/login', {replace : true})
+      } else {
+        
+      }
     } else if (isLoggedIn !== true) {
       navigate('/zenai/login', {replace : true})
     }
@@ -161,17 +167,16 @@ export default function AI() {
         <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
           {username}
         </div>
-        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`} onClick={() => navigate('/zenai/AI#settings', {replace : false})}>
+        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`} onClick={() => navigate('/zenai/settings', { state: { background: location } })}>
         </div>
       </div>
       <div id='close-menu' onClick={() => setNavbar('hide')}></div>
       <div id='navbar'>
-        <div id='navbar-logo'></div>
-        <span id='navbar-title'>ZenAI</span>
         <button className='nav-menu-button-wrap' onClick={() => setNavbar('show')}>
           <div></div>
           <div></div>
         </button>
+        <span id='navbar-title'>ZenAI</span>
       </div>
       <form onSubmit={runAI} id='ai-input-field'>
         <input

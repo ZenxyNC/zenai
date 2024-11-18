@@ -2,6 +2,6 @@ import './settings.css'
 
 export default function Settings() {
   return (
-    <h1>Settings</h1>
+    <div id='settings-overlay'>Hello world</div>
   )
 }

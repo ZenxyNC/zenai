@@ -133,7 +133,8 @@ input::placeholder {
   z-index: 0;
   opacity: 0;
   transition: 0.45s ease;
-  animation: animateCircle 2s forwards  ease
+  animation: animateCircle 2s forwards ease;
+  display: none
 }
 .purple{
   background-image: linear-gradient(-45deg, #452E79 40%, #7F55DF);
@@ -230,5 +231,6 @@ input::placeholder {
     z-index: 0;
     opacity: 1;
     transition: 0.45s ease;
+    display: block
   }
 }
