@@ -1,12 +1,109 @@
-#settings-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+#settings-overlay{
+  position: absolute;
+  width: calc(100% - 70%);
+  height: calc(100% - 70%);
+  background-color: rgb(33, 40, 50, 0.4);
+  box-shadow: 0px 0px 30px -10px #31475e;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(30px);
+  border-radius: 15px;
+  font-size: 20px;
+  font-family: 'InterRegular';
+  min-width: 530px;
+  min-height: 350px
 }
+#close-element{
+  width: 20px;
+  height: 20px;
+  background-image: url('../../resource/close.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer
+}
+#fullscreen-basic{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(33, 40, 50, 0.2);
+  z-index: 600;
+  backdrop-filter: blur(5px)
+}
+#withNavmenu-basic {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: calc(100% - 310px);
+  height: 100%;
+  background-color: transparent;
+  z-index: 700;
+}
+#userLogin {
+  position: relative;
+  top: 20px;
+  left: 0px
+}
+#theme-section{
+  position: relative;
+  top: 35px;
+}
+
+.settings-contents{
+  position: relative;
+  top: 25px;
+  height: 15px
+}
+#settingsAuto-padding{
+  background-color: transparent;
+  width: calc(100% - 30px);
+  height: calc(100% - 20px);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+.right-settings-element {
+  position: absolute;
+  right: 0px
+}
+select {
+  width: 100px;
+  height: 25px;
+  background-color: rgb(49, 71, 94, 0.3);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+  outline: none
+}
+option {
+  color: white;
+  background-color: #31475E;
+  border-radius: 0px;
+  font-family: 'InterMedium';
+  transition: 0.5s
+}
+#customInstruction-setup {
+  width: 95px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: rgb(49, 71, 94, 0.3);
+  color: white;
+  position: absolute;
+  top: 0px;
+  padding-left: 5px;
+  font-size: 15px;
+  font-family: 'InterRegular';
+  align-items: center;
+  display: grid;
+  cursor: pointer
+}
+

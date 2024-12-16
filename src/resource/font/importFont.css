@@ -1,24 +1,24 @@
 @font-face {
-  font-family: GSansBlack;
-  src: url('ProductSans-Black.ttf');
+  font-family: InterExtraBold;
+  src: url('Inter_24pt-ExtraBold.ttf');
 }
 @font-face {
-  font-family: GSansBold;
-  src: url('ProductSans-Bold.ttf');
+  font-family: InterBold;
+  src: url('Inter_24pt-Bold.ttf');
 }
 @font-face {
-  font-family: GSansMedium;
-  src: url('ProductSans-Medium.ttf');
+  font-family: InterMedium;
+  src: url('Inter_24pt-Medium.ttf');
 }
 @font-face {
-  font-family: GSansRegular;
-  src: url('ProductSans-Regular.ttf');
+  font-family: InterRegular;
+  src: url('Inter_24pt-Regular.ttf');
 }
 @font-face {
-  font-family: GSansLight;
-  src: url('ProductSans-Light.ttf');
+  font-family: interLight;
+  src: url('Inter_24pt-Light.ttf');
 }
 @font-face {
-  font-family: GSansThin;
-  src: url('ProductSans-Thin.ttf');
+  font-family: InterSemiBold;
+  src: url('Inter_24pt-SemiBold.ttf');
 }

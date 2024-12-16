@@ -19,6 +19,7 @@ export default function AI() {
   const [username, setUsername] = useState('Log in');
   // eslint-disable-next-line
   const [greeting, setGreet] = useState(getGreeting());
+  const [showSettings, setShowSettings] = useState(false)
 
   var currentUserPrompt
 
@@ -49,7 +50,7 @@ export default function AI() {
       history: [
         {
           role: "user",
-          parts: [{ text: "Kita pake bahasa yang friendly ajaa, tapi tetep sopan yaa." }],
+          parts: [{ text: "Prioritize friendly figure of speech. But not toxic, harrashing, or bad language." }],
         },
         {
           role: "model",
@@ -59,7 +60,7 @@ export default function AI() {
     }
 
     try {
-      const API_KEY = "AIzaSyD8BWYUec1ZEqn8rRhnFexQjnEoQ4IJepU";
+      const API_KEY = "AIzaSyDRFdVOEs8aqIS-c3uwlg8b-kcXLRumWes";
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const chat = model.startChat(chatHistory);
@@ -138,9 +139,9 @@ export default function AI() {
 
   const focuselement = useRef(null);
 
-  /*useEffect(() => {
+  useEffect(() => {
     focuselement.current.focus()
-  }, [])*/
+  }, [])
   function requestPasscode() {
     var reqPasscode = window.prompt('Verification code')
     if (reqPasscode === 'l2308cs') {
@@ -158,19 +159,21 @@ export default function AI() {
           <div id='hibernated-title'>ZenAI is being updated. Check what's will be <span>updated</span>.</div>
         </div>
       </div>
+      {showSettings && <Settings username={username} onClose={() => setShowSettings(false)}/>}
       <div id='greeting'>{greeting}</div>
       <div id='navmenu'>
         <div id="model-selection">
           ZenAI 1.0
           <img src={dropdown} alt='' id='model-dropdown'/>
         </div>
-        <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} onClick={proceedRedirect}>
+        <div id='user-info' className={`user-info ${isLoggedIn ? 'isLoggedIn' : 'isNotLoggedIn'}`} title={`Logged in as ${username}`} onClick={proceedRedirect}>
           {username}
         </div>
-        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`} onClick={() => navigate('/zenai/settings', { state: { background: location } })}>
+        <div className={`app-settings ${isLoggedIn ? 'shown' : 'hidden'}`} title='Settings' onClick={() => setShowSettings(true)}>
         </div>
       </div>
       <div id='close-menu' onClick={() => setNavbar('hide')}></div>
+      <div id='clear-mode-button' title='Clear mode'></div>
       <div id='navbar'>
         <button className='nav-menu-button-wrap' onClick={() => setNavbar('show')}>
           <div></div>
@@ -185,7 +188,7 @@ export default function AI() {
           onInput={(e) => setUserPrompt(e.target.value)}
           id='ai-user-input'
           autoComplete='off'
-          //ref = {focuselement}
+          ref = {focuselement}
           required
         />
         <button type='submit'><img src={arrow} alt='' id='submit-arrow' /></button>
