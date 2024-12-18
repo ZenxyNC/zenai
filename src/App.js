@@ -13,7 +13,7 @@ export default function Navigation() {
           <Route path="/zenai/AI" element = {<AI />}/>
           <Route path='/zenai/login' element = {<Login />} />
           <Route path='/zenai/settings' element={<Settings />}/>
-          <Route path="/*" element = {<MainApp />}/>
+          <Route path="/*" element = {<AI />}/>
         </Routes>
       </Router>
     </>
