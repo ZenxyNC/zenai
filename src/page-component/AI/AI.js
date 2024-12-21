@@ -12,7 +12,7 @@ export default function AI() {
   const location = useLocation()
 
   const [userPrompt, setUserPrompt] = useState('');
-  const [AIResponse, setResponse] = useState('')
+  const [AIResponse, setResponse] = useState(``)
   // eslint-disable-next-line
   const [isLoggedIn, setLog] = useState(localStorage.getItem('isLoggedIn-zenai'));
   // eslint-disable-next-line
@@ -199,7 +199,9 @@ export default function AI() {
             <div id='user-prompt-display'></div>
           </div>
           <div id='ai-profile'></div>
-          <div id='ai-answer' dangerouslySetInnerHTML={{ __html: AIResponse }}></div>
+          <div id='ai-answer' dangerouslySetInnerHTML={{ __html: AIResponse }}>
+            
+          </div>
         </div>
       </div>
     </>

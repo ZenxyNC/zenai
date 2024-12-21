@@ -1,7 +1,7 @@
 html {
   background-color: #212832;
   color: #e8e8e8;
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -26,7 +26,7 @@ html {
   border: none;
   background-color: #31475e;
   padding-left: 10px;
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
   color: #e8e8e8;
   font-size: 15px;
   position: absolute;
@@ -36,7 +36,7 @@ html {
 }
 #ai-input-field ::-webkit-input-placeholder {
   color: rgb(232, 232, 232, 0.4);
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
 }
 #ai-input-field button {
   width: 42px;
@@ -86,7 +86,7 @@ html {
   width: calc(100% - 60px);
   height: max-content;
   background-color: transparent;
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
   font-size: 17px;
   line-height: 26px;
   margin-left: 45px;
@@ -117,7 +117,7 @@ html {
   max-width: 300px;
   display: grid;
   align-items: center;
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
   white-space: pre-wrap;
 }
 
@@ -187,7 +187,7 @@ html {
 }
 
 #navbar-title {
-  font-family: 'InterExtraBold';
+  font-family: 'GSansBlack';
   background: linear-gradient(to right bottom, #9050DA, #007AFF);
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -216,7 +216,7 @@ html {
   top: 5px;
   left: 5px;
   border-radius: 10px;
-  font-family: 'InterBold';
+  font-family: 'GSansBold';
   font-size: 18px;
   padding-left: 10px;
   align-items: center;
@@ -225,7 +225,7 @@ html {
   
 }
 #model-selection span:nth-child(1) {
-  font-family: 'InterRegular';
+  font-family: 'GSansRegular';
   font-size: 12px
 }
 
@@ -251,7 +251,7 @@ html {
   bottom: 5px;
   left: 5px;
   border-radius: 10px;
-  font-family: 'InterBold';
+  font-family: 'GSansBold';
   font-size: 20px;
   display: grid;
   place-items: center;
@@ -266,7 +266,7 @@ html {
   bottom: 5px;
   left: 5px;
   border-radius: 10px;
-  font-family: 'InterBold';
+  font-family: 'GSansBold';
   font-size: 20px;
   display: grid;
   place-items: center;
@@ -311,7 +311,7 @@ html {
   transform: translateX(-50%);
 }
 #hibernated-title {
-  font-family: 'InterExtraBold';
+  font-family: 'GSansBlack';
   font-size: 24px;
   position: absolute;
   top: 110px
@@ -364,7 +364,7 @@ html {
     border: none;
     background-color: #31475e;
     padding-left: 10px;
-    font-family: 'InterRegular';
+    font-family: 'GSansRegular';
     color: #e8e8e8;
     font-size: 15px;
     position: unset;
@@ -389,7 +389,7 @@ html {
     width: calc(100% - 150px);
     height: max-content;
     background-color: transparent;
-    font-family: 'InterRegular';
+    font-family: 'GSansRegular';
     font-size: 16px;
     line-height: 27px;
     margin-left: 45px;
@@ -417,7 +417,7 @@ html {
     display: grid
   }
   #greeting {
-    font-family: 'InterBold';
+    font-family: 'GSansBold';
     color: white;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -447,7 +447,7 @@ html {
 }
 
 #greeting {
-  font-family: 'InterBold';
+  font-family: 'GSansBold';
   background: white;
   -webkit-text-fill-color: transparent;
   background-clip: text;
